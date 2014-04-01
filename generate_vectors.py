@@ -11,7 +11,7 @@
 #
 # @author Pete Donnell <pete dot donnell at port dot ac dot uk>
 # @copyright University of Portsmouth 2014
-# @date 27/03/2014
+# @date 01/04/2014
 ##
 
 import copy
@@ -30,16 +30,19 @@ import itertools
 
 def increment_vector( vector, limit, offset = 0, step = 1 ):
 	length = len( vector )
+	# Check that all elemnts of the vector started within allowed bounds
 	for i in range( 0, length ):
 		if vector[i] < offset or vector[i] > limit:
 			print( 'Error: ' + str( vector[i] ) + ' is out of the allowed range ' + str( offset ) + '-' + str( limit ) + '.' )
 			exit( 1 )
+	# Increment the first element of the vector that is below the allowed limit, if possible
 	for i in range( 0, length ):
 		if vector[i] < limit:
 			vector[i] += step
 			return True
 		for j in range( 0, i + 1 ):
 			vector[j] = offset
+	# If all of the elements of the vector are already at their limit:
 	return False
 
 
@@ -51,24 +54,25 @@ def increment_vector( vector, limit, offset = 0, step = 1 ):
 # sets of { -1, 0, 1, 2 }-vectors in 3D, call with
 # generate_vectors( 3, 3, -1 )
 #
-# @param   dimension          int   Dimension of the vectors to generate
-# @param   base               int   Maximum value allowed in each vector
-# @param   offset             int   Offset value for each entry of each vector
-# @param   step               int   Step size to use when generating vectors
-# @return  sets_of_vectors    list  List of all possible sets of vectors
+# @param   dimension    int   Dimension of the vectors to generate
+# @param   base         int   Maximum value allowed in each vector
+# @param   offset       int   Offset value for each entry of each vector
+# @param   step         int   Step size to use when generating vectors
+# @return  all_vectors  list  List of all possible sets of vectors
 ##
 
 def generate_vectors( dimension, base, offset = 0, step = 1 ):
 	vector = [offset] * dimension
+	# Need to use copy here as lists are mutable and hence passed by reference
 	all_vectors = [copy.copy( vector )]
 	while increment_vector( vector, base + offset, offset, step ):
 		all_vectors.append( copy.copy( vector ) )
 	return all_vectors
 
 
-# Generate all possible vectors, then all possible n-tuples of them using itertools
+# Generate all possible vectors, then all possible n-tuples of them using itertools combinatorics
 all_vectors = generate_vectors( dimension = 2, base = 1, offset = 0 )
 print(all_vectors)
 number_of_vectors = 4
-vectors = [vector for vector in itertools.combinations(all_vectors, number_of_vectors)]
+vectors = [vector for vector in itertools.combinations( all_vectors, number_of_vectors )]
 print( vectors )

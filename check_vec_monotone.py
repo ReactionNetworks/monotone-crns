@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#!/usr/bin/env python
 
 # The space is of dimension d, the cone K has q generators, 
 # while the dual K* has p generators
@@ -55,6 +55,3 @@ if(suc):
     print(str(s)+' is not reduced')
 else:
     print(str(s)+' is reduced')
-
-
-
