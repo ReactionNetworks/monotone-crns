@@ -18,7 +18,7 @@
 # @date 08/04/2014
 ##
 
-from numpy import linalg as LA
+#from numpy import linalg as LA
 import numpy as NP
 
 def CRNv( K, Ks, s, d, p, q ):
