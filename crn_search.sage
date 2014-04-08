@@ -107,6 +107,8 @@ for set_of_base_vectors in dual_base_vectors:
 		print( 'is preserved by the following CRN vectors:' )
 		for crn_vector in preserved_crn_vectors:
 			print( str( crn_vector ) )
+			if numpy.count_nonzero( crn_vector ) > 2:
+				print( 'Monotone non-interconversion reaction found!' )
 		print( '' )
 print( 'Found ' + str( number_of_interesting_cones ) + ' cones that preserve two or more reactions out of a total of ' + str( len( dual_base_vectors ) ) + ' possible cones.' )
 print( '' )
