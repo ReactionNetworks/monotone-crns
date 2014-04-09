@@ -1,4 +1,9 @@
-*.pyc
 *~
 *.bak
+*.bz2
+*.gz
+*.log
+*.pyc
+*.pyx
+*.xz
 crn_search.py
