@@ -15,7 +15,7 @@
 # @author Murad Banaji <murad dot banaji at port dot ac dot uk>
 # @author Pete Donnell <pete dot donnell at port dot ac dot uk>
 # @copyright University of Portsmouth 2014
-# @date 08/04/2014
+# @date 09/04/2014
 ##
 
 #from numpy import linalg as LA
@@ -47,8 +47,15 @@ else:
 	print( str( s ) + ' failed' )
 '''
 
-# routine which returns True if a vector s is unreduced
-# and False otherwise
+##
+# Check whether a vector can be reduced
+#
+# Takes an integer vector and tests whether there exists a positive
+# integer that can divide every entry without remainder.
+#
+# @param   s  numpy.array<int>  The array to be tested
+# @return     bool              True if the array can be reduced, False otherwise
+##
 
 def not_red( s ): #not reduced
 	for i in range( 2, max( abs( s ) ) + 1 ):

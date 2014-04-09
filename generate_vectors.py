@@ -11,7 +11,7 @@
 #
 # @author Pete Donnell <pete dot donnell at port dot ac dot uk>
 # @copyright University of Portsmouth 2014
-# @date 08/04/2014
+# @date 09/04/2014
 ##
 
 import copy
@@ -35,7 +35,7 @@ def increment_vector( vector, limit, offset = 0, step = 1 ):
 	for i in range( 0, length ):
 		if vector[i] < offset or vector[i] > limit:
 			print( 'Error: ' + str( vector[i] ) + ' is out of the allowed range ' + str( offset ) + '-' + str( limit ) + '.' )
-			exit( 1 )
+			exit()
 	# Increment the first element of the vector that is below the allowed limit, if possible
 	for i in range( 0, length ):
 		if vector[i] < limit:
@@ -81,3 +81,39 @@ number_of_vectors = 4
 vectors = [vector for vector in itertools.combinations( all_vectors, number_of_vectors )]
 print( vectors )
 '''
+
+##
+# Strictly ompare two arrays
+#
+# Earlier entries are more significant, e.g. [1, 0, 0] > [0, 1, 1].
+#
+# @param   array1  iterable  The array which is tested to be greater
+# @param   array2  iterable  The array which is tested to be lesser
+# @return          bool      True if array1 > array2, False otherwise
+##
+def array_greater_than( array1, array2 ):
+	for i in range( len( array1 ) ):
+		if array1[i] > array2[i]:
+			return True
+		elif array1[i] < array2[i]:
+			return False
+	# All elements equal:
+	return False
+
+##
+# Compare two arrays
+#
+# Earlier entries are more significant, e.g. [1, 0, 0] > [0, 1, 1].
+#
+# @param   array1  iterable  The array which is tested to be greater
+# @param   array2  iterable  The array which is tested to be lesser
+# @return          bool      True if array1 >= array2, False otherwise
+##
+def array_greater_than_or_equal( array1, array2 ):
+	for i in range( len( array1 ) ):
+		if array1[i] > array2[i]:
+			return True
+		elif array1[i] < array2[i]:
+			return False
+	# All elements equal:
+	return True
