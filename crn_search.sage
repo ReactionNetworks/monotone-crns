@@ -7,7 +7,7 @@
 #
 # @author Pete Donnell <pete dot donnell at port dot ac dot uk>
 # @copyright University of Portsmouth 2014
-# @date 09/04/2014
+# @date 15/04/2014
 ##
 
 # Custom libraries
@@ -74,11 +74,11 @@ print( '' )
 
 # Calculate all possible sets of generators for the dual
 dual_all_base_vectors = gv.generate_vectors( dimension, dual_max - dual_min, dual_min )
-dual_base_vectors = [vector for vector in itertools.combinations(dual_all_base_vectors, dual_number_of_generators)]
-if debug:
-	print( 'Sets of possible dual vectors are ' )
-	print( dual_base_vectors )
-	print( '' )
+#dual_base_vectors = [vector for vector in itertools.combinations(dual_all_base_vectors, dual_number_of_generators)]
+#if debug:
+#	print( 'Sets of possible dual vectors are ' )
+#	print( dual_base_vectors )
+#	print( '' )
 
 # Calculate all possible CRN vectors, ignoring oppositely signed duplicates
 crn_vectors = gv.generate_vectors( dimension, 2 * crn_max, -crn_max )
@@ -115,7 +115,10 @@ def vector_in_cone_span( vector, cone ):
 
 # Go through each possible dual, and test each CRN in turn
 number_of_interesting_cones = 0
-for set_of_base_vectors in dual_base_vectors:
+number_of_possible_cones = 0
+#for set_of_base_vectors in dual_base_vectors:
+for set_of_base_vectors in itertools.combinations(dual_all_base_vectors, dual_number_of_generators):
+	number_of_possible_cones += 1
 	if show_interconversions:
 		noninterconversion_vector_found = True
 	else:
@@ -180,9 +183,9 @@ for set_of_base_vectors in dual_base_vectors:
 		print( '' )
 print( '' )
 if show_interconversions:
-	print( 'Found ' + str( number_of_interesting_cones ) + ' cones that preserve two or more non-outflow reactions out of a total of ' + str( len( dual_base_vectors ) ) + ' possible cones.' )
+	print( 'Found ' + str( number_of_interesting_cones ) + ' cones that preserve two or more non-outflow reactions out of a total of ' + str( number_of_possible_cones ) + ' possible cones.' )
 else:
-	print( 'Found ' + str( number_of_interesting_cones ) + ' cones that preserve two or more non-outflow reactions, including at least one non-interconversion reaction, out of a total of ' + str( len( dual_base_vectors ) ) + ' possible cones.' )
+	print( 'Found ' + str( number_of_interesting_cones ) + ' cones that preserve two or more non-outflow reactions, including at least one non-interconversion reaction, out of a total of ' + str( number_of_possible_cones ) + ' possible cones.' )
 print( '' )
 print( '' )
 
