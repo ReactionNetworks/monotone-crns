@@ -11,12 +11,14 @@
 #
 # @author Pete Donnell <pete dot donnell at port dot ac dot uk>
 # @copyright University of Portsmouth 2014
-# @date 09/04/2014
+# @date 29/04/2014
 ##
 
 import copy
+import errno
 import itertools
 import numpy
+import sys
 
 
 ##
@@ -35,7 +37,7 @@ def increment_vector( vector, limit, offset = 0, step = 1 ):
 	for i in range( 0, length ):
 		if vector[i] < offset or vector[i] > limit:
 			print( 'Error: ' + str( vector[i] ) + ' is out of the allowed range ' + str( offset ) + '-' + str( limit ) + '.' )
-			exit()
+			sys.exit( errno.EDOM )
 	# Increment the first element of the vector that is below the allowed limit, if possible
 	for i in range( 0, length ):
 		if vector[i] < limit:
@@ -83,7 +85,7 @@ print( vectors )
 '''
 
 ##
-# Strictly ompare two arrays
+# Strictly compare two arrays
 #
 # Earlier entries are more significant, e.g. [1, 0, 0] > [0, 1, 1].
 #
