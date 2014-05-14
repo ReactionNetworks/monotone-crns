@@ -15,7 +15,7 @@
 # @author Murad Banaji <murad dot banaji at port dot ac dot uk>
 # @author Pete Donnell <pete dot donnell at port dot ac dot uk>
 # @copyright University of Portsmouth 2014
-# @date 09/04/2014
+# @date 14/05/2014
 ##
 
 #from numpy import linalg as LA

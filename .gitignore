@@ -1,10 +1,14 @@
 *~
 *.bak
 *.bz2
+*.c
 *.gz
 *.log
 *.pyc
-*.pyx
+*.py
 *.sh
+*.so
 *.xz
-crn_search.py
+build
+!setup_check_vec_monotone.py
+!setup_generate_vectors.py
