@@ -1,0 +1,24 @@
+To run the monotone CRN search, follow these steps:
+
+1. Install Sage, if you haven't already. Sage 6.2rc or higher is strongly recommended,
+   as there is a memory leak in the function Cone.dual() in earlier versions of Sage,
+   which is used in the main loop of the CRN search.
+
+2. Make sure that the Sage binary is in your PATH environment variable.
+
+3. Edit the compile script, ensuring that SAGEPYTHON points to the correct location of
+   the Python binary in your Sage install.
+
+4. Compile the Python libraries by running './compile'.
+
+5. Optionally, create your own .ini file by copying one of the existing ones.
+
+6. Launch the script with './crn.sage <inifile>', or run through several ini files
+   sequentially using a script like the example below.
+
+#!/bin/sh
+for i in 3d*.ini
+do
+	LOGFILE=$(echo "$i" | cut -d . -f 1).log
+	./crn.sage "$i" > $LOGFILE
+done

@@ -9,9 +9,10 @@
 # vectors. The third-level, innermost lists are individual vectors
 # within a set.
 #
-# @author Pete Donnell <pete dot donnell at port dot ac dot uk>
-# @copyright University of Portsmouth 2014
-# @date 29/04/2014
+# @author     Pete Donnell <pete dot donnell at port dot ac dot uk>
+# @copyright  University of Portsmouth 2014
+# @license    https://gnu.org/licenses/gpl-3.0-standalone.html GPLv3 or later
+# @date       19/05/2014
 ##
 
 import copy
@@ -23,6 +24,8 @@ import sys
 
 ##
 # Increment a lexicographically-ordered vector
+#
+# TODO: throw exception on error, instead of sys.exit()
 #
 # @param   vector   numpy.array  Vector to increment
 # @param   limit    int          Maximum value allowed in each entry of the vector

@@ -12,10 +12,11 @@
 #
 # It returns
 #
-# @author Murad Banaji <murad dot banaji at port dot ac dot uk>
-# @author Pete Donnell <pete dot donnell at port dot ac dot uk>
-# @copyright University of Portsmouth 2014
-# @date 14/05/2014
+# @author     Murad Banaji <murad dot banaji at port dot ac dot uk>
+# @author     Pete Donnell <pete dot donnell at port dot ac dot uk>
+# @copyright  University of Portsmouth 2014
+# @license    https://gnu.org/licenses/gpl-3.0-standalone.html GPLv3 or later
+# @date       19/05/2014
 ##
 
 #from numpy import linalg as LA

@@ -3,11 +3,12 @@
 ##
 # Search for monotone CRNs
 #
-# To do: write long description
+# TODO: write long description
 #
-# @author Pete Donnell <pete dot donnell at port dot ac dot uk>
-# @copyright University of Portsmouth 2014
-# @date 14/05/2014
+# @author     Pete Donnell <pete dot donnell at port dot ac dot uk>
+# @copyright  University of Portsmouth 2014
+# @license    https://gnu.org/licenses/gpl-3.0-standalone.html GPLv3 or later
+# @date       19/05/2014
 ##
 
 # Custom libraries
@@ -39,7 +40,7 @@ mem_debug2 = False
 start_time = time.time()
 
 # Debugging, following http://guillaume.segu.in/blog/code/487/optimizing-memory-usage-in-python-a-case-study/
-# guppy was installed with 'cd <sagedir>' followed by './sage --python -m easy_install guppy'
+# guppy can be installed with 'cd <sagedir>' followed by './sage --python -m easy_install guppy'
 if mem_debug:
 	import guppy
 	h = guppy.hpy()
@@ -49,6 +50,7 @@ if mem_debug:
 if len( sys.argv ) != 2:
 	print( 'Usage: crn_search.sage <inifile>' )
 	sys.exit( errno.EINVAL )
+
 # Python 2.x version of ini file parser:
 config = ConfigParser.ConfigParser()
 config.read( sys.argv[1] )
@@ -58,8 +60,9 @@ dual_min = config.getint( 'DEFAULT', 'dual_min' )
 dual_max = config.getint( 'DEFAULT', 'dual_max' )
 crn_max = config.getint( 'DEFAULT', 'crn_max' )
 show_interconversions = config.getboolean( 'DEFAULT', 'interconversions' )
+
 '''
-Python 3.x version of ini file parser:
+# Python 3.x version of ini file parser:
 config = configparser.ConfigParser()
 config.read( sys.argv[1] )
 dimension = int( config['DEFAULT']['dimension'] )
