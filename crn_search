@@ -1,0 +1,13 @@
+#!/bin/sh
+SAGE=$(which sage)
+if [ -z $SAGE ]
+then
+	echo "Error: sage binary not found"
+	exit 1
+fi
+if [ $# -ne 1 ]
+then
+	echo "Usage: crn_search <filename>"
+	exit 2
+fi
+echo "input_file='$1'\n%run crn_search.spyx" | $SAGE 

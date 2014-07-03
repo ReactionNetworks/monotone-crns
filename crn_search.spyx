@@ -14,7 +14,7 @@
 # Custom libraries
 import check_vec_monotone as cvm
 import generate_vectors as gv
-from sage.all import *
+#from sage.all import *
 
 
 # Standard libraries
@@ -46,7 +46,8 @@ if len( sys.argv ) != 3:
 
 # Python 2.x version of ini file parser:
 config = ConfigParser.ConfigParser()
-config.read( sys.argv[2] )
+#config.read( sys.argv[2] )
+config.read( input_file )
 dimension = config.getint( 'DEFAULT', 'dimension' )
 dual_number_of_generators = config.getint( 'DEFAULT', 'dual_number_of_generators' )
 dual_min = config.getint( 'DEFAULT', 'dual_min' )
